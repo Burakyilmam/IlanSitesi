@@ -1,4 +1,4 @@
-﻿@model List<Entities.Category>
+﻿@model List<Entities.Car>
 @{
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,8 +6,8 @@
 <h1>True Categories</h1>
 
 <ul>
-    @foreach (var category in Model)
+    @foreach (var car in Model)
     {
-        <li>@category.Name</li>
+        <li>@car.Category.Name</li>
     }
 </ul>

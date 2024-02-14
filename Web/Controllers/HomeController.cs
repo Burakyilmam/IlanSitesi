@@ -6,16 +6,16 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ICategoryService _categoryService;
+        private readonly ICarService _carService;
 
-        public HomeController(ICategoryService categoryService)
+        public HomeController(ICarService carService)
         {
-            _categoryService = categoryService;
+            _carService = carService;
         }
         public IActionResult Home()
         {
-            var trueCategories = _categoryService.True();
-            return View(trueCategories);
+            var Included = _carService.Include();
+            return View(Included);
         }
     }
 }

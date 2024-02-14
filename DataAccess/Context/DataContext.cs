@@ -12,5 +12,6 @@ namespace DataAccess.Context
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Car> Cars { get; set; }
     }
 }
