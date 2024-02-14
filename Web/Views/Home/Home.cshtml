@@ -1,0 +1,13 @@
+﻿@model List<Entities.Category>
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>True Categories</h1>
+
+<ul>
+    @foreach (var category in Model)
+    {
+        <li>@category.Name</li>
+    }
+</ul>
