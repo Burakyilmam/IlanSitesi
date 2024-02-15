@@ -6,7 +6,6 @@
 }
 
 <div class="container">
-    <h1>BrandList</h1>
     <table>
         <thead>
             <tr>
@@ -29,4 +28,5 @@
         </tbody>
     </table>
     <h6>@Model.Count Adet Marka Bulunmaktakdır.@ViewBag.True tanesi Aktif durumda , @ViewBag.False tanesi Pasif durumdadır.</h6>
+    @await Html.PartialAsync("~/Views/Brand/BrandAdd.cshtml")
 </div>

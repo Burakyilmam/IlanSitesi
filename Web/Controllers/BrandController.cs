@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers
@@ -20,6 +21,19 @@ namespace Web.Controllers
             ViewBag.True = True;
             ViewBag.False = False;
             return View(brands);
+        }
+        [HttpGet]
+        public IActionResult BrandAdd()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BrandAdd(Brand brand)
+        {
+            brand.Status = true;
+            brand.CreateDate = DateTime.Now;
+            _brandService.Add(brand);
+            return RedirectToAction("BrandList");
         }
     }
 }
