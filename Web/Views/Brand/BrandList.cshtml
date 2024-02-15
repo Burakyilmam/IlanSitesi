@@ -1,0 +1,32 @@
+﻿@using Entities
+@model List<Brand>
+@{
+    ViewData["Title"] = "BrandList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>BrandList</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Marka Adı</th>
+                <th>Oluşturulma Tarihi</th>
+                <th>Statüsü</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var brand in Model)
+            {
+                <tr>
+                    <td>@brand.Id</td>
+                    <td>@brand.Name</td>
+                    <td>@brand.CreateDate</td>
+                    <td>@brand.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h6>@Model.Count Adet Marka Bulunmaktakdır.@ViewBag.True tanesi Aktif durumda , @ViewBag.False tanesi Pasif durumdadır.</h6>
+</div>

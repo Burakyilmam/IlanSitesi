@@ -20,8 +20,12 @@ namespace Web
 
             builder.Services.AddScoped<ICategoryDal, CategoryRepository>();
             builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
             builder.Services.AddScoped<ICarDal, CarRepository>();
             builder.Services.AddScoped<ICarService, CarManager>();
+
+            builder.Services.AddScoped<IBrandDal, BrandRepository>();
+            builder.Services.AddScoped<IBrandService, BrandManager>();
 
             var app = builder.Build();
 
