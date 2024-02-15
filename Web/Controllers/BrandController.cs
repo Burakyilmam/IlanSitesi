@@ -62,5 +62,93 @@ namespace Web.Controllers
             _brandService.Update(brand);
             return RedirectToAction("BrandList");
         }
+        public IActionResult SortById()
+        {
+            var brands = _brandService.ListAll().OrderBy(b => b.Id);
+            var True = brands.Where(x => x.Status == true).Count();
+            var False = brands.Where(x => x.Status == false).Count();
+            var Count = brands.Count();
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.Count = Count;
+            return View(brands);
+        }
+        public IActionResult SortByIdDescending()
+        {
+            var brands = _brandService.ListAll().OrderByDescending(b => b.Id);
+            var True = brands.Where(x => x.Status == true).Count();
+            var False = brands.Where(x => x.Status == false).Count();
+            var Count = brands.Count();
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.Count = Count;
+            return View(brands);
+        }
+        public IActionResult SortByName()
+        {
+            var brands = _brandService.ListAll().OrderBy(b => b.Name);
+            var True = brands.Where(x => x.Status == true).Count();
+            var False = brands.Where(x => x.Status == false).Count();
+            var Count = brands.Count();
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.Count = Count;
+            return View(brands);
+        }
+        public IActionResult SortByNameDescending()
+        {
+            var brands = _brandService.ListAll().OrderByDescending(b => b.Name);
+            var True = brands.Where(x => x.Status == true).Count();
+            var False = brands.Where(x => x.Status == false).Count();
+            var Count = brands.Count();
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.Count = Count;
+            return View(brands);
+        }
+        public IActionResult SortByDate()
+        {
+            var brands = _brandService.ListAll().OrderBy(b => b.CreateDate);
+            var True = brands.Where(x => x.Status == true).Count();
+            var False = brands.Where(x => x.Status == false).Count();
+            var Count = brands.Count();
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.Count = Count;
+            return View(brands);
+        }
+        public IActionResult SortByDateDescending()
+        {
+            var brands = _brandService.ListAll().OrderByDescending(b => b.CreateDate);
+            var True = brands.Where(x => x.Status == true).Count();
+            var False = brands.Where(x => x.Status == false).Count();
+            var Count = brands.Count();
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.Count = Count;
+            return View(brands);
+        }
+        public IActionResult SortByStatus()
+        {
+            var brands = _brandService.ListAll().OrderBy(b => b.Status);
+            var True = brands.Where(x => x.Status == true).Count();
+            var False = brands.Where(x => x.Status == false).Count();
+            var Count = brands.Count();
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.Count = Count;
+            return View(brands);
+        }
+        public IActionResult SortByStatusDescending()
+        {
+            var brands = _brandService.ListAll().OrderByDescending(b => b.Status);
+            var True = brands.Where(x => x.Status == true).Count();
+            var False = brands.Where(x => x.Status == false).Count();
+            var Count = brands.Count();
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.Count = Count;
+            return View(brands);
+        }
     }
 }

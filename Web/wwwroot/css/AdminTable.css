@@ -1,0 +1,30 @@
+﻿.table td {
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#Count {
+    color: orangered;
+    font-weight: bold;
+}
+
+#True {
+    color: green;
+    font-weight: bold;
+}
+
+#False {
+    color: red;
+    font-weight: bold;
+}
+
+#Zero {
+    color: darkgray;
+    font-weight: bold;
+}
+
+.table a {
+    color: white;
+    text-decoration: none;
+}
