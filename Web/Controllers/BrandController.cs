@@ -13,15 +13,25 @@ namespace Web.Controllers
             _brandService = brandService;
         }
 
-        public IActionResult BrandList()
+        public IActionResult BrandList(int page = 1, int pageSize = 5)
         {
             var brands = _brandService.ListAll();
-            var True = brands.Where(x => x.Status == true).Count();
-            var False = brands.Where(x => x.Status == false).Count();
+            var totalCount = brands.Count();
+
+            var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            var True = pagedBrands.Count(x => x.Status == true);
+            var False = pagedBrands.Count(x => x.Status == false);
+
+            ViewBag.Count = totalCount;
             ViewBag.True = True;
             ViewBag.False = False;
-            return View(brands);
+            ViewBag.PageNumber = page;
+            ViewBag.PageSize = pageSize;
+
+            return View(pagedBrands);
         }
+
         [HttpGet]
         public IActionResult BrandAdd()
         {
