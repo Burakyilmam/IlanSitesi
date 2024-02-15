@@ -23,6 +23,11 @@ namespace Business.Concrete
             _modelDal.Add(t);
         }
 
+        public bool Check(Func<Model, bool> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(Model t)
         {
            _modelDal.Delete(t);

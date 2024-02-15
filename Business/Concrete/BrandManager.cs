@@ -23,6 +23,11 @@ namespace Business.Concrete
             _brandDal.Add(t);
         }
 
+        public bool Check(Func<Brand, bool> predicate)
+        {
+           return _brandDal.Check(predicate);
+        }
+
         public void Delete(Brand t)
         {
             _brandDal.Delete(t);

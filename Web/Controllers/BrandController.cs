@@ -30,10 +30,19 @@ namespace Web.Controllers
         [HttpPost]
         public IActionResult BrandAdd(Brand brand)
         {
-            brand.Status = true;
-            brand.CreateDate = DateTime.Now;
-            _brandService.Add(brand);
-            return RedirectToAction("BrandList");
+            var brandExist = _brandService.Check(b => b.Name == brand.Name);
+            if (brandExist == false)
+            {
+                brand.Status = true;
+                brand.CreateDate = DateTime.Now;
+                _brandService.Add(brand);
+                return RedirectToAction("BrandList");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Marka Adı Bulunmaktadır. Lütfen Aşağıdaki Alana Veritabanında Bulunmayan Bir Marka Adı Yazınız.";
+                return RedirectToAction("BrandList");
+            }
         }
         public IActionResult BrandDelete(int id)
         {

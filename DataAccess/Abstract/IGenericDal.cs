@@ -13,5 +13,6 @@ namespace DataAccess.Abstract
         void Delete(T t);
         List<T> ListAll();
         T Get(int id);
+        bool Check(Func<T, bool> predicate);
     }
 }

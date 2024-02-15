@@ -8,6 +8,7 @@
 {
     @Html.TextBoxFor(x => x.Id, new { @style = "display:none;" })
     <center class="mb-2 mt-2">@Html.TextBoxFor(x => x.Name, new { @style = "padding: 4px 10px;margin-left:-10px;width:50%;" })</center>
+    @Html.TextBoxFor(x => x.CreateDate, new { @style = "display:none;" })
     <center>
         @Html.DropDownList("Status", new List<SelectListItem>
     {

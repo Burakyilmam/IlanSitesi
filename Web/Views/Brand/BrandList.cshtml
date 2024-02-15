@@ -11,13 +11,20 @@
         overflow: hidden;
     }
     #Count{
-        color:goldenrod;
+        color:orangered; 
+        font-weight:bold;
     }
     #True{
-        color:green;
+        color:green; 
+        font-weight:bold;
     }
     #False{
         color:red;
+        font-weight:bold;
+    }
+    #Zero{
+        color:darkgray;
+        font-weight:bold;
     }
 </style>
 @if (Model.Any())
@@ -64,11 +71,43 @@
                 <div class="col-sm-12 text-center"><span id="Count">@Model.Count</span> Adet Marka Bulunmaktakdır.</div>
                 <div class="col-sm-12 text-center">
                     <span id="True">@ViewBag.True</span> tanesi Aktif,
-                    <span id="False">@ViewBag.False</span> tanesi Pasif.
+                    <span>
+                        @if (@ViewBag.False > 0)
+                        {
+                            <span id="False">
+                                @ViewBag.False
+                            </span>
+                        }
+                        else
+                        {
+                            <span id="Zero">
+                                @ViewBag.False
+                            </span>
+                        }
+                    </span> tanesi Pasif.
                 </div>
             </div>
         </h6>
     </div>
 
 }
+else
+{
+    <center>
+        <div class="alert alert-danger text-center mt-4" style="width:70%;">
+            <div class="mt-1 mb-1">
+                <b>Marka Bulunamadı.</b>
+            </div>
+        </div>
+    </center>
+}
+<div class="text-center">
+    @if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+</div>
 @await Html.PartialAsync("~/Views/Brand/BrandAdd.cshtml")
+

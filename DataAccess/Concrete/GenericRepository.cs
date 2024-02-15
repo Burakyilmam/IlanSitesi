@@ -42,5 +42,9 @@ namespace DataAccess.Concrete
         {
             return _dataContext.Set<T>().ToList();
         }
+        public bool Check(Func<T, bool> predicate)
+        {
+            return _dataContext.Set<T>().Any(predicate);
+        }
     }
 }
