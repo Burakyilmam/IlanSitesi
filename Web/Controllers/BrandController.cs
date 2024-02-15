@@ -35,5 +35,23 @@ namespace Web.Controllers
             _brandService.Add(brand);
             return RedirectToAction("BrandList");
         }
+        public IActionResult BrandDelete(int id)
+        {
+            var value = _brandService.Get(id);
+            _brandService.Delete(value);
+            return RedirectToAction("BrandList");
+        }
+        [HttpGet]
+        public IActionResult BrandUpdate(int id)
+        {
+            var value = _brandService.Get(id);
+            return View(value);
+        }
+        [HttpPost]
+        public IActionResult BrandUpdate(Brand brand)
+        {
+            _brandService.Update(brand);
+            return RedirectToAction("BrandList");
+        }
     }
 }

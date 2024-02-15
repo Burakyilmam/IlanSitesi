@@ -13,6 +13,8 @@
                 <th>Marka Adı</th>
                 <th>Oluşturulma Tarihi</th>
                 <th>Statüsü</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +25,8 @@
                     <td>@brand.Name</td>
                     <td>@brand.CreateDate</td>
                     <td>@brand.Status</td>
+                    <td><a href="/Brand/BrandDelete/@brand.Id/">Sil</a></td>
+                    <td><a href="/Brand/BrandUpdate/@brand.Id/">Güncelle</a></td>
                 </tr>
             }
         </tbody>
