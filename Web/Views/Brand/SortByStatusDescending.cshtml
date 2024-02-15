@@ -67,6 +67,49 @@
             }
         </tbody>
     </table>
+    @if (ViewBag.PageSize > 0 && ViewBag.Count > ViewBag.PageSize)
+    {
+        <div class="text-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="/Brand/BrandList?page=1&pageSize=@ViewBag.PageSize">
+                                <span aria-hidden="true">İlk</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="/Brand/BrandList?page=@(ViewBag.PageNumber - 1)&pageSize=@ViewBag.PageSize">
+                                <span aria-hidden="true">&lsaquo;</span>
+                            </a>
+                        </li>
+                    }
+
+                    @for (int i = 1; i <= Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize); i++)
+                    {
+                        <li class="page-item @(i == ViewBag.PageNumber ? "active" : "")">
+                            <a class="page-link" href="/Brand/SortByStatusDescending?page=@i&pageSize=@ViewBag.PageSize">@i</a>
+                        </li>
+                    }
+
+                    @if (ViewBag.PageNumber < Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize))
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="/Brand/SortByStatusDescending?page=@(ViewBag.PageNumber + 1)&pageSize=@ViewBag.PageSize">
+                                <span aria-hidden="true">&rsaquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="/Brand/SortByStatusDescending?page=@(Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize))&pageSize=@ViewBag.PageSize">
+                                <span aria-hidden="true">Son</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
     <div class="col-12 text-center">
         <h6>
             <div class="row">
