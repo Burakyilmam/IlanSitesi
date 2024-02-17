@@ -1,0 +1,23 @@
+﻿@model Entities.Category
+@{
+    ViewData["Title"] = "CategoryUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CategoryUpdate", "Category", FormMethod.Post))
+{
+    @Html.TextBoxFor(x => x.Id, new { @style = "display:none;" })
+    <center class="mb-2 mt-2">@Html.TextBoxFor(x => x.Name, new { @style = "padding: 4px 10px;margin-left:-10px;width:50%;" })</center>
+    @Html.TextBoxFor(x => x.CreateDate, new { @style = "display:none;" })
+    <center>
+        @Html.DropDownList("Status", new List<SelectListItem>
+    {
+    new SelectListItem { Value = "True", Text = "Aktif" },
+    new SelectListItem { Value = "False", Text = "Pasif" }
+    }, "-- Seçiniz --", new { @style = "padding: 4px 10px;margin-left:-10px;width:50%" })
+    </center>
+    <center class="mt-2">
+        <button style="padding: 4px 10px;margin-left:-10px;" class="btn-success text-center">Güncelle</button>
+    </center>
+}
+

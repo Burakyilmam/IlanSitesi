@@ -58,6 +58,7 @@ namespace Web.Controllers
         {
             var value = _brandService.Get(id);
             _brandService.Delete(value);
+            TempData["SuccessMessage"] = "Marka başarıyla silindi.";
             return RedirectToAction("BrandList");
         }
         [HttpGet]

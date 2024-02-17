@@ -50,7 +50,7 @@ namespace Business.Concrete
 
         public bool Check(Func<Category, bool> predicate)
         {
-            throw new NotImplementedException();
+            return _categoryDal.Check(predicate);
         }
     }
 }
