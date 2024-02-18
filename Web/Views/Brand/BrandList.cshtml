@@ -5,28 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="/css/AdminTable.css" rel="stylesheet" />
+
+<div class="row justify-content-center mt-2 mb-3">
+    <div class="col-8">
+        @using (Html.BeginForm())
+        {
+            <div class="input-group">
+                <input type="text" class="form-control" style="width: 75%;" name="p" placeholder="Aramak istediğiniz marka adını yazınız.">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
 @if (Model.Any())
 {
     <table class="table table-striped table-bordered text-center">
         <thead class="thead-dark">
             <tr>
                 <th class="text-white">
-                    <a href="/Brand/SortByIdDescending?page=1&pageSize=@ViewBag.PageSize">
+                    <a href="/Brand/SortByIdDescending?page=1&pageSize=@ViewBag.PageSize&p=@ViewBag.Search">
                         ID
                     </a>
                 </th>
                 <th class="text-white">
-                    <a href="/Brand/SortByNameDescending?page=1&pageSize=@ViewBag.PageSize">
+                    <a href="/Brand/SortByNameDescending?page=1&pageSize=@ViewBag.PageSize&p=@ViewBag.Search">
                         Marka
                     </a>
                 </th>
                 <th class="text-white">
-                    <a href="/Brand/SortByDateDescending?page=1&pageSize=@ViewBag.PageSize">
+                    <a href="/Brand/SortByDateDescending?page=1&pageSize=@ViewBag.PageSize&p=@ViewBag.Search">
                         Oluşturulma Tarihi
                     </a>
                 </th>
                 <th class="text-white">
-                    <a href="/Brand/SortByStatusDescending?page=1&pageSize=@ViewBag.PageSize">
+                    <a href="/Brand/SortByStatusDescending?page=1&pageSize=@ViewBag.PageSize&p=@ViewBag.Search">
                         Statü
                     </a>
                 </th>
@@ -70,12 +87,12 @@
                     @if (ViewBag.PageNumber > 1)
                     {
                         <li class="page-item">
-                            <a class="page-link" href="/Brand/BrandList?page=1&pageSize=@ViewBag.PageSize">
+                        <a class="page-link" href="/Brand/BrandList?page=1&pageSize=@ViewBag.PageSize&p=@ViewBag.Search">
                                 <span aria-hidden="true">İlk</span>
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="/Brand/BrandList?page=@(ViewBag.PageNumber - 1)&pageSize=@ViewBag.PageSize">
+                        <a class="page-link" href="/Brand/BrandList?page=@(ViewBag.PageNumber - 1)&pageSize=@ViewBag.PageSize&p=@ViewBag.Search">
                                 <span aria-hidden="true">&lsaquo;</span>
                             </a>
                         </li>
@@ -84,19 +101,19 @@
                     @for (int i = 1; i <= Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize); i++)
                     {
                         <li class="page-item @(i == ViewBag.PageNumber ? "active" : "")">
-                            <a class="page-link" href="/Brand/BrandList?page=@i&pageSize=@ViewBag.PageSize">@i</a>
+                        <a class="page-link" href="/Brand/BrandList?page=@i&pageSize=@ViewBag.PageSize&p=@ViewBag.Search">@i</a>
                         </li>
                     }
 
                     @if (ViewBag.PageNumber < Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize))
                     {
                         <li class="page-item">
-                            <a class="page-link" href="/Brand/BrandList?page=@(ViewBag.PageNumber + 1)&pageSize=@ViewBag.PageSize">
+                        <a class="page-link" href="/Brand/BrandList?page=@(ViewBag.PageNumber + 1)&pageSize=@ViewBag.PageSize&p=@ViewBag.Search">
                                 <span aria-hidden="true">&rsaquo;</span>
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="/Brand/BrandList?page=@(Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize))&pageSize=@ViewBag.PageSize">
+                        <a class="page-link" href="/Brand/BrandList?page=@(Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize))&pageSize=@ViewBag.PageSize&p=@ViewBag.Search">
                                 <span aria-hidden="true">Son</span>
                             </a>
                         </li>
@@ -107,11 +124,11 @@
                     @ViewBag.PageSize
                 </button>
                 <div class="dropdown-menu" aria-labelledby="pageSizeDropdown">
-                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=5">5</a>
-                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=10">10</a>
-                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=20">20</a>
-                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=50">50</a>
-                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=100">100</a>
+                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=5&p=@ViewBag.Search">5</a>
+                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=10&p=@ViewBag.Search">10</a>
+                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=20&p=@ViewBag.Search">20</a>
+                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=50&p=@ViewBag.Search">50</a>
+                    <a class="dropdown-item" href="/Brand/BrandList?page=1&pageSize=100&p=@ViewBag.Search">100</a>
                     <form class="px-4">
                         <div class="form-group">
                             <label for="customPageSize">Özel</label>
@@ -199,8 +216,9 @@ else
 <script>
     function setCustomPageSize() {
         var customValue = document.getElementById('customPageSize').value;
+        var searchValue = '@ViewBag.Search';
         if (customValue > 0) {
-            window.location.href = '/Brand/BrandList?page=1&pageSize=' + customValue;
+            window.location.href = '/Brand/BrandList?page=1&pageSize=' + customValue + '&p=' + searchValue;
         }
     }
 </script>
