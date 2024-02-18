@@ -5,6 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="/css/AdminTable.css" rel="stylesheet" />
+<div class="row justify-content-center mt-2 mb-3">
+    <div class="col-8">
+        @using (Html.BeginForm())
+        {
+            <div class="input-group">
+                <input type="text" class="form-control" style="width: 75%;" name="p" placeholder="Aramak istediğiniz marka adını yazınız.">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 @if (Model.Any())
 {
     <table class="table table-striped table-bordered text-center">

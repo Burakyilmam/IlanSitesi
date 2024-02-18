@@ -155,7 +155,9 @@ namespace Web.Controllers
         }
         public IActionResult SortByDate(string p,int page = 1, int pageSize = 10)
         {
+            ViewBag.Search = p;
             var brands = _brandService.ListAll();
+            if (!string.IsNullOrEmpty(p))
             {
                 brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
             }
