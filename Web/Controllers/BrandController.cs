@@ -12,9 +12,14 @@ namespace Web.Controllers
         {
             _brandService = brandService;
         }
-        public IActionResult BrandList(int page = 1, int pageSize = 10)
+        public IActionResult BrandList(string p,int page = 1, int pageSize = 10)
         {
+            ViewBag.Search = p;
             var brands = _brandService.ListAll();
+            if (!string.IsNullOrEmpty(p))
+            {
+                brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
+            }
             var totalCount = brands.Count();
 
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
@@ -72,9 +77,13 @@ namespace Web.Controllers
             _brandService.Update(brand);
             return RedirectToAction("BrandList");
         }
-        public IActionResult SortById(int page = 1, int pageSize = 10)
+        public IActionResult SortById(string p,int page = 1, int pageSize = 10)
         {
-            var brands = _brandService.ListAll().OrderBy(b => b.Id);
+            var brands = _brandService.ListAll();
+            if (!string.IsNullOrEmpty(p))
+            {
+                brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
+            }
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             var True = brands.Count(x => x.Status == true);
@@ -85,11 +94,15 @@ namespace Web.Controllers
             ViewBag.False = False;
             ViewBag.PageNumber = page;
             ViewBag.PageSize = pageSize;
-            return View(pagedBrands);
+            return View(pagedBrands.OrderBy(b => b.Id));
         }
-        public IActionResult SortByIdDescending(int page = 1, int pageSize = 10)
+        public IActionResult SortByIdDescending(string p, int page = 1, int pageSize = 10)
         {
-            var brands = _brandService.ListAll().OrderByDescending(b => b.Id);
+            var brands = _brandService.ListAll();
+            if (!string.IsNullOrEmpty(p))
+            {
+                brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
+            }
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             var True = brands.Count(x => x.Status == true);
@@ -100,11 +113,15 @@ namespace Web.Controllers
             ViewBag.False = False;
             ViewBag.PageNumber = page;
             ViewBag.PageSize = pageSize;
-            return View(pagedBrands);
+            return View(pagedBrands.OrderByDescending(b => b.Id));
         }
-        public IActionResult SortByName(int page = 1, int pageSize = 10)
+        public IActionResult SortByName(string p, int page = 1, int pageSize = 10)
         {
             var brands = _brandService.ListAll().OrderBy(b => b.Name);
+            if (!string.IsNullOrEmpty(p))
+            {
+                brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
+            }
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             var True = brands.Count(x => x.Status == true);
@@ -117,9 +134,13 @@ namespace Web.Controllers
             ViewBag.PageSize = pageSize;
             return View(pagedBrands);
         }
-        public IActionResult SortByNameDescending(int page = 1, int pageSize = 10)
+        public IActionResult SortByNameDescending(string p, int page = 1, int pageSize = 10)
         {
             var brands = _brandService.ListAll().OrderByDescending(b => b.Name);
+            if (!string.IsNullOrEmpty(p))
+            {
+                brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
+            }
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             var True = brands.Count(x => x.Status == true);
@@ -132,9 +153,12 @@ namespace Web.Controllers
             ViewBag.PageSize = pageSize;
             return View(pagedBrands);
         }
-        public IActionResult SortByDate(int page = 1, int pageSize = 10)
+        public IActionResult SortByDate(string p,int page = 1, int pageSize = 10)
         {
-            var brands = _brandService.ListAll().OrderBy(b => b.CreateDate);
+            var brands = _brandService.ListAll();
+            {
+                brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
+            }
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             var True = brands.Count(x => x.Status == true);
@@ -145,11 +169,15 @@ namespace Web.Controllers
             ViewBag.False = False;
             ViewBag.PageNumber = page;
             ViewBag.PageSize = pageSize;
-            return View(pagedBrands);
+            return View(pagedBrands.OrderBy(b => b.CreateDate));
         }
-        public IActionResult SortByDateDescending(int page = 1, int pageSize = 10)
+        public IActionResult SortByDateDescending(string p, int page = 1, int pageSize = 10)
         {
-            var brands = _brandService.ListAll().OrderByDescending(b => b.CreateDate);
+            var brands = _brandService.ListAll();
+            if (!string.IsNullOrEmpty(p))
+            {
+                brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
+            }
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             var True = brands.Count(x => x.Status == true);
@@ -160,11 +188,15 @@ namespace Web.Controllers
             ViewBag.False = False;
             ViewBag.PageNumber = page;
             ViewBag.PageSize = pageSize;
-            return View(pagedBrands);
+            return View(pagedBrands.OrderByDescending(b => b.CreateDate));
         }
-        public IActionResult SortByStatus(int page = 1, int pageSize = 10)
+        public IActionResult SortByStatus(string p, int page = 1, int pageSize = 10)
         {
-            var brands = _brandService.ListAll().OrderBy(b => b.Status);
+            var brands = _brandService.ListAll();
+            if (!string.IsNullOrEmpty(p))
+            {
+                brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
+            }
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             var True = brands.Count(x => x.Status == true);
@@ -175,11 +207,15 @@ namespace Web.Controllers
             ViewBag.False = False;
             ViewBag.PageNumber = page;
             ViewBag.PageSize = pageSize;
-            return View(pagedBrands);
+            return View(pagedBrands.OrderBy(b => b.Status));
         }
-        public IActionResult SortByStatusDescending(int page = 1, int pageSize = 10)
+        public IActionResult SortByStatusDescending(string p, int page = 1, int pageSize = 10)
         {
-            var brands = _brandService.ListAll().OrderByDescending(b => b.Status);
+            var brands = _brandService.ListAll();
+            if (!string.IsNullOrEmpty(p))
+            {
+                brands = brands.Where(x => x.Name.ToLower().Contains(p.ToLower())).ToList();
+            }
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             var True = brands.Count(x => x.Status == true);
@@ -190,7 +226,7 @@ namespace Web.Controllers
             ViewBag.False = False;
             ViewBag.PageNumber = page;
             ViewBag.PageSize = pageSize;
-            return View(pagedBrands);
+            return View(pagedBrands.OrderByDescending(b => b.Status);
         }
             
     }
