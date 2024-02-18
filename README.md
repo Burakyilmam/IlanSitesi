@@ -1,2 +1,3 @@
 # İlan Sitesi
-![BrandList - Opera 2024-02-15 18-51-52](https://github.com/Burakyilmam/IlanSitesi/assets/61635780/bf9757a4-aa8b-4023-b826-d9002d430b82)
+
+![BrandList - Opera 2024-02-18 15-26-06-min](https://github.com/Burakyilmam/IlanSitesi/assets/61635780/fd7f3826-d471-4ff2-a973-c0f487f306ed)
