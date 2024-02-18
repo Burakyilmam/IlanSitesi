@@ -20,8 +20,8 @@ namespace Web.Controllers
 
             var pagedCategories = categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedCategories.Count(x => x.Status == true);
-            var False = pagedCategories.Count(x => x.Status == false);
+            var True = categories.Count(x => x.Status == true);
+            var False = categories.Count(x => x.Status == false);
 
             ViewBag.Count = totalCount;
             ViewBag.True = True;
@@ -75,12 +75,12 @@ namespace Web.Controllers
         }
         public IActionResult SortById(int page = 1, int pageSize = 10)
         {
-            var Categories = _categoryService.ListAll().OrderBy(b => b.Id);
-            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var categories = _categoryService.ListAll().OrderBy(b => b.Id);
+            var pagedCategories = categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedCategories.Count(x => x.Status == true);
-            var False = pagedCategories.Count(x => x.Status == false);
-            var totalCount = Categories.Count();
+            var True = categories.Count(x => x.Status == true);
+            var False = categories.Count(x => x.Status == false);
+            var totalCount = categories.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
             ViewBag.False = False;
@@ -90,12 +90,12 @@ namespace Web.Controllers
         }
         public IActionResult SortByIdDescending(int page = 1, int pageSize = 10)
         {
-            var Categories = _categoryService.ListAll().OrderByDescending(b => b.Id);
-            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var categories = _categoryService.ListAll().OrderByDescending(b => b.Id);
+            var pagedCategories = categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedCategories.Count(x => x.Status == true);
-            var False = pagedCategories.Count(x => x.Status == false);
-            var totalCount = Categories.Count();
+            var True = categories.Count(x => x.Status == true);
+            var False = categories.Count(x => x.Status == false);
+            var totalCount = categories.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
             ViewBag.False = False;
@@ -105,12 +105,12 @@ namespace Web.Controllers
         }
         public IActionResult SortByName(int page = 1, int pageSize = 10)
         {
-            var Categories = _categoryService.ListAll().OrderBy(b => b.Name);
-            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var categories = _categoryService.ListAll().OrderBy(b => b.Name);
+            var pagedCategories = categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedCategories.Count(x => x.Status == true);
-            var False = pagedCategories.Count(x => x.Status == false);
-            var totalCount = Categories.Count();
+            var True = categories.Count(x => x.Status == true);
+            var False = categories.Count(x => x.Status == false);
+            var totalCount = categories.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
             ViewBag.False = False;
@@ -120,12 +120,12 @@ namespace Web.Controllers
         }
         public IActionResult SortByNameDescending(int page = 1, int pageSize = 10)
         {
-            var Categories = _categoryService.ListAll().OrderByDescending(b => b.Name);
-            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var categories = _categoryService.ListAll().OrderByDescending(b => b.Name);
+            var pagedCategories = categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedCategories.Count(x => x.Status == true);
-            var False = pagedCategories.Count(x => x.Status == false);
-            var totalCount = Categories.Count();
+            var True = categories.Count(x => x.Status == true);
+            var False = categories.Count(x => x.Status == false);
+            var totalCount = categories.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
             ViewBag.False = False;
@@ -135,12 +135,12 @@ namespace Web.Controllers
         }
         public IActionResult SortByDate(int page = 1, int pageSize = 10)
         {
-            var Categories = _categoryService.ListAll().OrderBy(b => b.CreateDate);
-            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var categories = _categoryService.ListAll().OrderBy(b => b.CreateDate);
+            var pagedCategories = categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedCategories.Count(x => x.Status == true);
-            var False = pagedCategories.Count(x => x.Status == false);
-            var totalCount = Categories.Count();
+            var True = categories.Count(x => x.Status == true);
+            var False = categories.Count(x => x.Status == false);
+            var totalCount = categories.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
             ViewBag.False = False;
@@ -150,12 +150,12 @@ namespace Web.Controllers
         }
         public IActionResult SortByDateDescending(int page = 1, int pageSize = 10)
         {
-            var Categories = _categoryService.ListAll().OrderByDescending(b => b.CreateDate);
-            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var categories = _categoryService.ListAll().OrderByDescending(b => b.CreateDate);
+            var pagedCategories = categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedCategories.Count(x => x.Status == true);
-            var False = pagedCategories.Count(x => x.Status == false);
-            var totalCount = Categories.Count();
+            var True = categories.Count(x => x.Status == true);
+            var False = categories.Count(x => x.Status == false);
+            var totalCount = categories.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
             ViewBag.False = False;
@@ -165,12 +165,12 @@ namespace Web.Controllers
         }
         public IActionResult SortByStatus(int page = 1, int pageSize = 10)
         {
-            var Categories = _categoryService.ListAll().OrderBy(b => b.Status);
-            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var categories = _categoryService.ListAll().OrderBy(b => b.Status);
+            var pagedCategories = categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedCategories.Count(x => x.Status == true);
-            var False = pagedCategories.Count(x => x.Status == false);
-            var totalCount = Categories.Count();
+            var True = categories.Count(x => x.Status == true);
+            var False = categories.Count(x => x.Status == false);
+            var totalCount = categories.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
             ViewBag.False = False;
@@ -180,12 +180,12 @@ namespace Web.Controllers
         }
         public IActionResult SortByStatusDescending(int page = 1, int pageSize = 10)
         {
-            var Categories = _categoryService.ListAll().OrderByDescending(b => b.Status);
-            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var categories = _categoryService.ListAll().OrderByDescending(b => b.Status);
+            var pagedCategories = categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedCategories.Count(x => x.Status == true);
-            var False = pagedCategories.Count(x => x.Status == false);
-            var totalCount = Categories.Count();
+            var True = categories.Count(x => x.Status == true);
+            var False = categories.Count(x => x.Status == false);
+            var totalCount = categories.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
             ViewBag.False = False;

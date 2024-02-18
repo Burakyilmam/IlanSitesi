@@ -12,7 +12,6 @@ namespace Web.Controllers
         {
             _brandService = brandService;
         }
-
         public IActionResult BrandList(int page = 1, int pageSize = 10)
         {
             var brands = _brandService.ListAll();
@@ -20,8 +19,8 @@ namespace Web.Controllers
 
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedBrands.Count(x => x.Status == true);
-            var False = pagedBrands.Count(x => x.Status == false);
+            var True = brands.Count(x => x.Status == true);
+            var False = brands.Count(x => x.Status == false);
 
             ViewBag.Count = totalCount;
             ViewBag.True = True;
@@ -78,8 +77,8 @@ namespace Web.Controllers
             var brands = _brandService.ListAll().OrderBy(b => b.Id);
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedBrands.Count(x => x.Status == true);
-            var False = pagedBrands.Count(x => x.Status == false);
+            var True = brands.Count(x => x.Status == true);
+            var False = brands.Count(x => x.Status == false);
             var totalCount = brands.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
@@ -93,8 +92,8 @@ namespace Web.Controllers
             var brands = _brandService.ListAll().OrderByDescending(b => b.Id);
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedBrands.Count(x => x.Status == true);
-            var False = pagedBrands.Count(x => x.Status == false);
+            var True = brands.Count(x => x.Status == true);
+            var False = brands.Count(x => x.Status == false);
             var totalCount = brands.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
@@ -108,8 +107,8 @@ namespace Web.Controllers
             var brands = _brandService.ListAll().OrderBy(b => b.Name);
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedBrands.Count(x => x.Status == true);
-            var False = pagedBrands.Count(x => x.Status == false);
+            var True = brands.Count(x => x.Status == true);
+            var False = brands.Count(x => x.Status == false);
             var totalCount = brands.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
@@ -123,8 +122,8 @@ namespace Web.Controllers
             var brands = _brandService.ListAll().OrderByDescending(b => b.Name);
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedBrands.Count(x => x.Status == true);
-            var False = pagedBrands.Count(x => x.Status == false);
+            var True = brands.Count(x => x.Status == true);
+            var False = brands.Count(x => x.Status == false);
             var totalCount = brands.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
@@ -138,8 +137,8 @@ namespace Web.Controllers
             var brands = _brandService.ListAll().OrderBy(b => b.CreateDate);
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedBrands.Count(x => x.Status == true);
-            var False = pagedBrands.Count(x => x.Status == false);
+            var True = brands.Count(x => x.Status == true);
+            var False = brands.Count(x => x.Status == false);
             var totalCount = brands.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
@@ -153,8 +152,8 @@ namespace Web.Controllers
             var brands = _brandService.ListAll().OrderByDescending(b => b.CreateDate);
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedBrands.Count(x => x.Status == true);
-            var False = pagedBrands.Count(x => x.Status == false);
+            var True = brands.Count(x => x.Status == true);
+            var False = brands.Count(x => x.Status == false);
             var totalCount = brands.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
@@ -168,8 +167,8 @@ namespace Web.Controllers
             var brands = _brandService.ListAll().OrderBy(b => b.Status);
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedBrands.Count(x => x.Status == true);
-            var False = pagedBrands.Count(x => x.Status == false);
+            var True = brands.Count(x => x.Status == true);
+            var False = brands.Count(x => x.Status == false);
             var totalCount = brands.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
@@ -183,8 +182,8 @@ namespace Web.Controllers
             var brands = _brandService.ListAll().OrderByDescending(b => b.Status);
             var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            var True = pagedBrands.Count(x => x.Status == true);
-            var False = pagedBrands.Count(x => x.Status == false);
+            var True = brands.Count(x => x.Status == true);
+            var False = brands.Count(x => x.Status == false);
             var totalCount = brands.Count();
             ViewBag.Count = totalCount;
             ViewBag.True = True;
