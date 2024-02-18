@@ -54,7 +54,7 @@
                         }
                     </td>
                     <td>
-                        <a href="/Brand/BrandDelete/@brand.Id/" class="btn btn-danger">
+                         <a onclick="confirmDelete('/Brand/BrandDelete',@brand.Id)" class="btn btn-danger text-white">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>
@@ -155,4 +155,32 @@ else
     }
 </div>
 @await Html.PartialAsync("~/Views/Brand/BrandAdd.cshtml")
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    function confirmDelete(path, id) {
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: "Bu öğeyi silmek istediğinizden emin misiniz?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Evet, Sil',
+            cancelButtonText: 'Hayır, Vazgeç',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = path + '/' + id;
+            }
+        });
+    }
+
+    var successMessage = "@TempData["SuccessMessage"]";
+    if (successMessage) {
+        Swal.fire('Başarılı', successMessage, 'success');
+        setTimeout(function () {
+        }, 3000);
+    }
+</script>
+
 

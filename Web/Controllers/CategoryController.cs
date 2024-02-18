@@ -73,126 +73,126 @@ namespace Web.Controllers
             _categoryService.Update(category);
             return RedirectToAction("CategoryList");
         }
-        //public IActionResult SortById(int page = 1, int pageSize = 10)
-        //{
-        //    var brands = _brandService.ListAll().OrderBy(b => b.Id);
-        //    var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        public IActionResult SortById(int page = 1, int pageSize = 10)
+        {
+            var Categories = _categoryService.ListAll().OrderBy(b => b.Id);
+            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-        //    var True = pagedBrands.Count(x => x.Status == true);
-        //    var False = pagedBrands.Count(x => x.Status == false);
-        //    var totalCount = brands.Count();
-        //    ViewBag.Count = totalCount;
-        //    ViewBag.True = True;
-        //    ViewBag.False = False;
-        //    ViewBag.PageNumber = page;
-        //    ViewBag.PageSize = pageSize;
-        //    return View(pagedBrands);
-        //}
-        //public IActionResult SortByIdDescending(int page = 1, int pageSize = 10)
-        //{
-        //    var brands = _brandService.ListAll().OrderByDescending(b => b.Id);
-        //    var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var True = pagedCategories.Count(x => x.Status == true);
+            var False = pagedCategories.Count(x => x.Status == false);
+            var totalCount = Categories.Count();
+            ViewBag.Count = totalCount;
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.PageNumber = page;
+            ViewBag.PageSize = pageSize;
+            return View(pagedCategories);
+        }
+        public IActionResult SortByIdDescending(int page = 1, int pageSize = 10)
+        {
+            var Categories = _categoryService.ListAll().OrderByDescending(b => b.Id);
+            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-        //    var True = pagedBrands.Count(x => x.Status == true);
-        //    var False = pagedBrands.Count(x => x.Status == false);
-        //    var totalCount = brands.Count();
-        //    ViewBag.Count = totalCount;
-        //    ViewBag.True = True;
-        //    ViewBag.False = False;
-        //    ViewBag.PageNumber = page;
-        //    ViewBag.PageSize = pageSize;
-        //    return View(pagedBrands);
-        //}
-        //public IActionResult SortByName(int page = 1, int pageSize = 10)
-        //{
-        //    var brands = _brandService.ListAll().OrderBy(b => b.Name);
-        //    var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var True = pagedCategories.Count(x => x.Status == true);
+            var False = pagedCategories.Count(x => x.Status == false);
+            var totalCount = Categories.Count();
+            ViewBag.Count = totalCount;
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.PageNumber = page;
+            ViewBag.PageSize = pageSize;
+            return View(pagedCategories);
+        }
+        public IActionResult SortByName(int page = 1, int pageSize = 10)
+        {
+            var Categories = _categoryService.ListAll().OrderBy(b => b.Name);
+            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-        //    var True = pagedBrands.Count(x => x.Status == true);
-        //    var False = pagedBrands.Count(x => x.Status == false);
-        //    var totalCount = brands.Count();
-        //    ViewBag.Count = totalCount;
-        //    ViewBag.True = True;
-        //    ViewBag.False = False;
-        //    ViewBag.PageNumber = page;
-        //    ViewBag.PageSize = pageSize;
-        //    return View(pagedBrands);
-        //}
-        //public IActionResult SortByNameDescending(int page = 1, int pageSize = 10)
-        //{
-        //    var brands = _brandService.ListAll().OrderByDescending(b => b.Name);
-        //    var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var True = pagedCategories.Count(x => x.Status == true);
+            var False = pagedCategories.Count(x => x.Status == false);
+            var totalCount = Categories.Count();
+            ViewBag.Count = totalCount;
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.PageNumber = page;
+            ViewBag.PageSize = pageSize;
+            return View(pagedCategories);
+        }
+        public IActionResult SortByNameDescending(int page = 1, int pageSize = 10)
+        {
+            var Categories = _categoryService.ListAll().OrderByDescending(b => b.Name);
+            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-        //    var True = pagedBrands.Count(x => x.Status == true);
-        //    var False = pagedBrands.Count(x => x.Status == false);
-        //    var totalCount = brands.Count();
-        //    ViewBag.Count = totalCount;
-        //    ViewBag.True = True;
-        //    ViewBag.False = False;
-        //    ViewBag.PageNumber = page;
-        //    ViewBag.PageSize = pageSize;
-        //    return View(pagedBrands);
-        //}
-        //public IActionResult SortByDate(int page = 1, int pageSize = 10)
-        //{
-        //    var brands = _brandService.ListAll().OrderBy(b => b.CreateDate);
-        //    var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var True = pagedCategories.Count(x => x.Status == true);
+            var False = pagedCategories.Count(x => x.Status == false);
+            var totalCount = Categories.Count();
+            ViewBag.Count = totalCount;
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.PageNumber = page;
+            ViewBag.PageSize = pageSize;
+            return View(pagedCategories);
+        }
+        public IActionResult SortByDate(int page = 1, int pageSize = 10)
+        {
+            var Categories = _categoryService.ListAll().OrderBy(b => b.CreateDate);
+            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-        //    var True = pagedBrands.Count(x => x.Status == true);
-        //    var False = pagedBrands.Count(x => x.Status == false);
-        //    var totalCount = brands.Count();
-        //    ViewBag.Count = totalCount;
-        //    ViewBag.True = True;
-        //    ViewBag.False = False;
-        //    ViewBag.PageNumber = page;
-        //    ViewBag.PageSize = pageSize;
-        //    return View(pagedBrands);
-        //}
-        //public IActionResult SortByDateDescending(int page = 1, int pageSize = 10)
-        //{
-        //    var brands = _brandService.ListAll().OrderByDescending(b => b.CreateDate);
-        //    var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var True = pagedCategories.Count(x => x.Status == true);
+            var False = pagedCategories.Count(x => x.Status == false);
+            var totalCount = Categories.Count();
+            ViewBag.Count = totalCount;
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.PageNumber = page;
+            ViewBag.PageSize = pageSize;
+            return View(pagedCategories);
+        }
+        public IActionResult SortByDateDescending(int page = 1, int pageSize = 10)
+        {
+            var Categories = _categoryService.ListAll().OrderByDescending(b => b.CreateDate);
+            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-        //    var True = pagedBrands.Count(x => x.Status == true);
-        //    var False = pagedBrands.Count(x => x.Status == false);
-        //    var totalCount = brands.Count();
-        //    ViewBag.Count = totalCount;
-        //    ViewBag.True = True;
-        //    ViewBag.False = False;
-        //    ViewBag.PageNumber = page;
-        //    ViewBag.PageSize = pageSize;
-        //    return View(pagedBrands);
-        //}
-        //public IActionResult SortByStatus(int page = 1, int pageSize = 10)
-        //{
-        //    var brands = _brandService.ListAll().OrderBy(b => b.Status);
-        //    var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var True = pagedCategories.Count(x => x.Status == true);
+            var False = pagedCategories.Count(x => x.Status == false);
+            var totalCount = Categories.Count();
+            ViewBag.Count = totalCount;
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.PageNumber = page;
+            ViewBag.PageSize = pageSize;
+            return View(pagedCategories);
+        }
+        public IActionResult SortByStatus(int page = 1, int pageSize = 10)
+        {
+            var Categories = _categoryService.ListAll().OrderBy(b => b.Status);
+            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-        //    var True = pagedBrands.Count(x => x.Status == true);
-        //    var False = pagedBrands.Count(x => x.Status == false);
-        //    var totalCount = brands.Count();
-        //    ViewBag.Count = totalCount;
-        //    ViewBag.True = True;
-        //    ViewBag.False = False;
-        //    ViewBag.PageNumber = page;
-        //    ViewBag.PageSize = pageSize;
-        //    return View(pagedBrands);
-        //}
-        //public IActionResult SortByStatusDescending(int page = 1, int pageSize = 10)
-        //{
-        //    var brands = _brandService.ListAll().OrderByDescending(b => b.Status);
-        //    var pagedBrands = brands.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            var True = pagedCategories.Count(x => x.Status == true);
+            var False = pagedCategories.Count(x => x.Status == false);
+            var totalCount = Categories.Count();
+            ViewBag.Count = totalCount;
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.PageNumber = page;
+            ViewBag.PageSize = pageSize;
+            return View(pagedCategories);
+        }
+        public IActionResult SortByStatusDescending(int page = 1, int pageSize = 10)
+        {
+            var Categories = _categoryService.ListAll().OrderByDescending(b => b.Status);
+            var pagedCategories = Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-        //    var True = pagedBrands.Count(x => x.Status == true);
-        //    var False = pagedBrands.Count(x => x.Status == false);
-        //    var totalCount = brands.Count();
-        //    ViewBag.Count = totalCount;
-        //    ViewBag.True = True;
-        //    ViewBag.False = False;
-        //    ViewBag.PageNumber = page;
-        //    ViewBag.PageSize = pageSize;
-        //    return View(pagedBrands);
-        //}
+            var True = pagedCategories.Count(x => x.Status == true);
+            var False = pagedCategories.Count(x => x.Status == false);
+            var totalCount = Categories.Count();
+            ViewBag.Count = totalCount;
+            ViewBag.True = True;
+            ViewBag.False = False;
+            ViewBag.PageNumber = page;
+            ViewBag.PageSize = pageSize;
+            return View(pagedCategories);
+        }
 
     }
 }

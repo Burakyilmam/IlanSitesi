@@ -1,32 +1,33 @@
 ﻿@using Entities
-@model IEnumerable<Brand>
+@model IEnumerable<Category>
 @{
-    ViewData["Title"] = "BrandList";
+    ViewData["Title"] = "SortByStatus";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="/css/AdminTable.css" rel="stylesheet" />
+
 @if (Model.Any())
 {
     <table class="table table-striped table-bordered text-center">
         <thead class="thead-dark">
             <tr>
                 <th class="text-white">
-                    <a href="/Brand/SortByIdDescending">
+                    <a href="/Category/SortByIdDescending">
                         ID
                     </a>
                 </th>
                 <th class="text-white">
-                    <a href="/Brand/SortByNameDescending">
-                        Marka
+                    <a href="/Category/SortByNameDescending">
+                        Kategori
                     </a>
                 </th>
                 <th class="text-white">
-                    <a href="/Brand/SortByDateDescending">
+                    <a href="/Category/SortByDateDescending">
                         Oluşturulma Tarihi
                     </a>
                 </th>
                 <th class="text-white">
-                    <a href="/Brand/SortByStatus">
+                    <a href="/Category/SortByStatusDescending">
                         Statü
                     </a>
                 </th>
@@ -35,31 +36,29 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var brand in Model)
+            @foreach (var category in Model)
             {
                 <tr>
-                    <td>@brand.Id</td>
-                    <td>@brand.Name</td>
-                    <td>@brand.CreateDate</td>
+                    <td>@category.Id</td>
+                    <td>@category.Name</td>
+                    <td>@category.CreateDate</td>
                     <td>
-                        @if (brand.Status == true)
+                        @if (category.Status == true)
                         {
-                            <a id="statu" style="padding:2px 12px;border-radius:80%" class="@brand.Status btn-success">
-                            </a>
+                            <a id="statu" style="padding:2px 12px;border-radius:80%" class="@category.Status btn-success"></a>
                         }
                         else
                         {
-                            <a id="statu" style="padding:2px 12px;border-radius:80%" class="@brand.Status btn-danger">
-                            </a>
+                            <a id="statu" style="padding:2px 12px;border-radius:80%" class="@category.Status btn-danger"></a>
                         }
                     </td>
                     <td>
-                         <a onclick="confirmDelete('/Brand/BrandDelete',@brand.Id)" class="btn btn-danger text-white">
+                        <a onclick="confirmDelete('/Category/CategoryDelete',@category.Id)" class="btn btn-danger text-white">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="/Brand/BrandUpdate/@brand.Id/" class="btn btn-primary">
+                        <a href="/Category/CategoryUpdate/@category.Id/" class="btn btn-primary">
                             <i class="fa fa-refresh"></i>
                         </a>
                     </td>
@@ -75,12 +74,12 @@
                     @if (ViewBag.PageNumber > 1)
                     {
                         <li class="page-item">
-                            <a class="page-link" href="/Brand/BrandList?page=1&pageSize=@ViewBag.PageSize">
+                            <a class="page-link" href="/Category/SortByStatus?page=1&pageSize=@ViewBag.PageSize">
                                 <span aria-hidden="true">İlk</span>
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="/Brand/BrandList?page=@(ViewBag.PageNumber - 1)&pageSize=@ViewBag.PageSize">
+                            <a class="page-link" href="/Category/SortByStatus?page=@(ViewBag.PageNumber - 1)&pageSize=@ViewBag.PageSize">
                                 <span aria-hidden="true">&lsaquo;</span>
                             </a>
                         </li>
@@ -89,19 +88,19 @@
                     @for (int i = 1; i <= Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize); i++)
                     {
                         <li class="page-item @(i == ViewBag.PageNumber ? "active" : "")">
-                            <a class="page-link" href="/Brand/SortByStatusDescending?page=@i&pageSize=@ViewBag.PageSize">@i</a>
+                            <a class="page-link" href="/Category/SortByStatus?page=@i&pageSize=@ViewBag.PageSize">@i</a>
                         </li>
                     }
 
                     @if (ViewBag.PageNumber < Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize))
                     {
                         <li class="page-item">
-                            <a class="page-link" href="/Brand/SortByStatusDescending?page=@(ViewBag.PageNumber + 1)&pageSize=@ViewBag.PageSize">
+                            <a class="page-link" href="/Category/SortByStatus?page=@(ViewBag.PageNumber + 1)&pageSize=@ViewBag.PageSize">
                                 <span aria-hidden="true">&rsaquo;</span>
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="/Brand/SortByStatusDescending?page=@(Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize))&pageSize=@ViewBag.PageSize">
+                            <a class="page-link" href="/Category/SortByStatus?page=@(Math.Ceiling((decimal)ViewBag.Count / ViewBag.PageSize))&pageSize=@ViewBag.PageSize">
                                 <span aria-hidden="true">Son</span>
                             </a>
                         </li>
@@ -113,7 +112,7 @@
     <div class="col-12 text-center">
         <h6>
             <div class="row">
-                <div class="col-sm-12 text-center"><span id="Count">@ViewBag.Count</span> Adet Marka Bulunmaktakdır.</div>
+                <div class="col-sm-12 text-center"><span id="Count">@ViewBag.Count</span> Adet Kategori Bulunmaktakdır.</div>
                 <div class="col-sm-12 text-center">
                     <span id="True">@ViewBag.True</span> tanesi Aktif,
                     <span>
@@ -141,7 +140,7 @@ else
     <center>
         <div class="alert alert-danger text-center mt-4" style="width:70%;">
             <div class="mt-1 mb-1">
-                <b>Marka Bulunamadı.</b>
+                <b>Kategori Bulunamadı.</b>
             </div>
         </div>
     </center>
@@ -154,9 +153,10 @@ else
         </div>
     }
 </div>
-@await Html.PartialAsync("~/Views/Brand/BrandAdd.cshtml")
+@await Html.PartialAsync("~/Views/Category/CategoryAdd.cshtml")
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <script>
     function confirmDelete(path, id) {
         Swal.fire({
